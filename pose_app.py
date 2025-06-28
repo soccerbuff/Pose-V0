@@ -278,29 +278,12 @@ def main():
     import tempfile
     import pandas as pd
     st.markdown('<h1 class="main-header">Pose Estimation and Analysis</h1>', unsafe_allow_html=True)
-    st.sidebar.markdown("## Settings")
-    model_complexity = st.sidebar.selectbox(
-        "Model Complexity",
-        options=[0, 1, 2],
-        index=1,
-        help="Higher complexity = more accurate but slower processing"
-    )
-    detection_confidence = st.sidebar.slider(
-        "Detection Confidence",
-        min_value=0.1,
-        max_value=1.0,
-        value=0.5,
-        step=0.1,
-        help="Minimum confidence for pose detection"
-    )
-    tracking_confidence = st.sidebar.slider(
-        "Tracking Confidence",
-        min_value=0.1,
-        max_value=1.0,
-        value=0.5,
-        step=0.1,
-        help="Minimum confidence for pose tracking"
-    )
+    
+    # Fixed model parameters (no sidebar controls)
+    model_complexity = 1
+    detection_confidence = 0.60
+    tracking_confidence = 0.70
+    
     st.markdown('<div class="info-box">', unsafe_allow_html=True)
     st.markdown("""
     **Upload a video file to analyze body pose movements and generate animated skeleton plots.**
@@ -654,9 +637,8 @@ Please generate a detailed, structured PDF report with clear sections for each p
         st.markdown("### Instructions")
         st.markdown("""
         1. **Upload a video file** using the file uploader above
-        2. **Adjust settings** in the sidebar if needed
-        3. **Wait for processing** - the app will analyze each frame
-        4. **View results** in the tabs
+        2. **Wait for processing** - the app will analyze each frame
+        3. **View results** in the tabs
         """)
         st.markdown("### Tips for Best Results")
         st.markdown("""
